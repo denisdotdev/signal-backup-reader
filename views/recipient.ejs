@@ -1,0 +1,47 @@
+<html>
+<head>
+    <title><%= recipient[0].system_display_name %></title>
+
+    <style>
+        .message_bubble {
+            -webkit-border-radius: 15px;
+            -moz-border-radius: 15px;
+            border-radius: 15px;
+            color: white;
+            display: block;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            max-width: 50%;
+        }
+
+        .my_message {
+            position: relative;
+            left: 15rem;
+            background-color: green;
+        }
+
+        .their_message {
+            position: relative;
+            left: 1rem;
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+<h1>Conversation avec <%= recipient[0].system_display_name %></h1>
+
+<% if (messages.length > 0) { %>
+    <% messages.forEach(function(message) { %>
+        <div class="message_bubble <% if (message.type == '10485783') { %> my_message <% } else { %> their_message <% } %>">
+            <%= message.body %>
+
+            <span style="opacity: 0.3;"><%= moment(message.date).format('Do MMMM YYYY'); %></span>
+        </div>
+    <% }) %>
+<% } else { %>
+    <b>Aucun message trouvé avec cette personne</b>
+<% } %>
+
+
+</body>
+</html>

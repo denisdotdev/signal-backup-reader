@@ -1,0 +1,5 @@
+<ul>
+<% recipients.forEach(function(recipient) { %>
+    <li><a href="/recipients/<%= recipient._id %>"><%= recipient.system_display_name %></a></li>
+<% }); %>
+</ul>
